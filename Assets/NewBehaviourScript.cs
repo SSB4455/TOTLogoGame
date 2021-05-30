@@ -25,6 +25,8 @@ public class NewBehaviourScript : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
+		Application.targetFrameRate = 60;
+
 		progressSilder?.onValueChanged.AddListener(OnProgressChanged);
 		demoToggle?.onValueChanged.AddListener((value) => { progressSilder.interactable = !value; });
 		demoToggle.isOn = true;
