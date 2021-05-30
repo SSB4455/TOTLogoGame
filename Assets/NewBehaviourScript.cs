@@ -5,9 +5,12 @@ using UnityEngine.UI;
 
 public class NewBehaviourScript : MonoBehaviour
 {
-	public Sharp2DObject[] sharp2dList;
-	public float speed;
-	public float Speed { get { return speed; } set{ speed = value; } }
+	public Sharp2DObject[] sharp2ds;
+	public float[] stepTimes;
+	Dictionary<int, List<Sharp2DObject>> stepSequence = new Dictionary<int, List<Sharp2DObject>>();
+	List<Sharp2DObject> currStepSharp2dList;
+	float stepTime;
+	int stepIndex = 0;
 	float checkArea;
 	public ParticleSystem effect;
 
@@ -34,6 +37,19 @@ public class NewBehaviourScript : MonoBehaviour
 		float.TryParse(checkInputField.text, out checkArea);
 		checkInputField.onValueChanged.AddListener((textValue) => { float.TryParse(checkInputField.text, out checkArea); });
 		effect?.gameObject.SetActive(false);
+
+		for (int i = 0; i < sharp2ds.Length; i++)
+		{
+			if (!stepSequence.ContainsKey(sharp2ds[i].stepId))
+			{
+				stepSequence.Add(sharp2ds[i].stepId, new List<Sharp2DObject>());
+			}
+			stepSequence[sharp2ds[i].stepId].Add(sharp2ds[i]);
+			sharp2ds[i].gameObject.SetActive(false);
+		}
+		
+		currStepSharp2dList = stepSequence[(new List<int>(stepSequence.Keys))[stepIndex]];
+		stepTime = stepTimes[stepIndex];
 	}
 
 	float timeWaitShift;
@@ -43,7 +59,7 @@ public class NewBehaviourScript : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		float distance = sharp2dList[0].DistanceToGoal;
+		float distance = currStepSharp2dList[0].DistanceToGoal;
 
 		if (!freeToggle.isOn)
 		{
@@ -53,27 +69,53 @@ public class NewBehaviourScript : MonoBehaviour
 			}
 			else if (demoToggle.isOn)
 			{
-				moveF += speed * Time.deltaTime;
+				moveF += Time.deltaTime * (1 / stepTime);
 				progressSilder.value = moveF;
-				distance = sharp2dList[0].DistanceToGoal;
+				distance = currStepSharp2dList[0].DistanceToGoal;
 				if (Mathf.Abs(distance) < (checkArea / 2) && !stopToWait)
 				{
 					stopToWait = true;
 					timeWaitShift = 0;
 					progressSilder.value = 0;
 					moveF = 0;
+
+					if (stepIndex < 0)
+					{
+						stepIndex++;
+					}
+					stepIndex++;
+					if (stepIndex < stepSequence.Keys.Count && stepIndex < stepTimes.Length)
+					{
+						currStepSharp2dList = stepSequence[(new List<int>(stepSequence.Keys))[stepIndex]];
+						stepTime = stepTimes[stepIndex];
+						moveF = -1;
+						stopToWait = false;
+					}
 				}
 				if (moveF > 1)
 				{
 					moveF = -1;
 					stopToWait = false;
+
+					if (stepIndex >= stepSequence.Keys.Count)
+					{
+						stepIndex--;
+					}
+					stepIndex--;
+					if (stepIndex >= 0 && stepIndex < stepSequence.Keys.Count && stepIndex < stepTimes.Length)
+					{
+						currStepSharp2dList = stepSequence[(new List<int>(stepSequence.Keys))[stepIndex]];
+						stepTime = stepTimes[stepIndex];
+						moveF = 0;
+						stopToWait = true;
+					}
 				}
 			}
 			else if (playToggle.isOn)
 			{
-				moveF += speed * Time.deltaTime;
+				moveF += Time.deltaTime * (1 / stepTime);
 				progressSilder.value = moveF;
-				distance = sharp2dList[0].DistanceToGoal;
+				distance = currStepSharp2dList[0].DistanceToGoal;
 				effect?.gameObject.SetActive(false);
 				if (Input.touchCount > 0 || Input.GetMouseButtonDown(1))
 				{
@@ -93,14 +135,15 @@ public class NewBehaviourScript : MonoBehaviour
 			}
 		}
 
-		distinceText.text = "speed:" + speed.ToString("f3") + "\t\tdistance:" + distance.ToString("f3");
+		distinceText.text = "stepTime:" + stepTime.ToString("f1") + "\t\tdistance:" + distance.ToString("f3");
 	}
 
 	void OnProgressChanged(float progress)
 	{
-		for (int i = 0; i < sharp2dList.Length; i++)
+		for (int i = 0; i < currStepSharp2dList.Count; i++)
 		{
-			sharp2dList[i].MoveProgress(progress);
+			currStepSharp2dList[i].gameObject.SetActive(true);
+			currStepSharp2dList[i].MoveProgress(progress);
 		}
 	}
 }

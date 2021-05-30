@@ -8,6 +8,7 @@ public class Sharp2DObject : MonoBehaviour
 {
 	internal RectTransform rectTrans { get; private set; }
 	public float waitDistance = 1000;
+	public int stepId = 0;
 	Vector2 goalPosition;
 	float goalRotation;
 	Vector2 startPosition;
@@ -17,7 +18,7 @@ public class Sharp2DObject : MonoBehaviour
 
 
 
-	void Start()
+	private void Awake()
 	{
 		rectTrans = GetComponent<RectTransform>();
 		if (rectTrans == null)
