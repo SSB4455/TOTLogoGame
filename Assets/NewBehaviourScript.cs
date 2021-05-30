@@ -127,10 +127,36 @@ public class NewBehaviourScript : MonoBehaviour
 						effect?.gameObject.SetActive(true);
 						effect?.Play();
 					}
+
+					if (stepIndex < 0)
+					{
+						stepIndex++;
+					}
+					stepIndex++;
+					if (stepIndex < stepSequence.Keys.Count && stepIndex < stepTimes.Length)
+					{
+						currStepSharp2dList = stepSequence[(new List<int>(stepSequence.Keys))[stepIndex]];
+						stepTime = stepTimes[stepIndex];
+						moveF = -1;
+						stopToWait = false;
+					}
+				}
+				if (stopToWait && (stepIndex >= stepSequence.Keys.Count || stepIndex >= stepTimes.Length))
+				{
+					for (int i = 0; i < sharp2ds.Length; i++)
+					{
+						sharp2ds[i].gameObject.SetActive(false);
+					}
+					stepIndex = 0;
+					currStepSharp2dList = stepSequence[(new List<int>(stepSequence.Keys))[stepIndex]];
+					stepTime = stepTimes[stepIndex];
+					moveF = -1;
+					stopToWait = false;
 				}
 				if (moveF > 1)
 				{
 					moveF = -1;
+					stopToWait = false;
 				}
 			}
 		}

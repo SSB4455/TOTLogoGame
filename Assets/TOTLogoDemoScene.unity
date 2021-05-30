@@ -915,7 +915,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 10
+  m_Text: 20
 --- !u!222 &539959462
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1046,7 +1046,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da8638c2977082d40b0ab2adee8222a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitDistance: 1000
+  waitDistance: 2000
   stepId: 0
 --- !u!1 &732834823
 GameObject:
@@ -1474,7 +1474,7 @@ MonoBehaviour:
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
-  m_Text: 10
+  m_Text: 20
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
@@ -2459,7 +2459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da8638c2977082d40b0ab2adee8222a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitDistance: 1000
+  waitDistance: 2000
   stepId: 0
 --- !u!1 &1591441902
 GameObject:
@@ -2546,7 +2546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da8638c2977082d40b0ab2adee8222a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitDistance: 1000
+  waitDistance: 2000
   stepId: 0
 --- !u!1 &1624704978
 GameObject:
@@ -2633,7 +2633,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da8638c2977082d40b0ab2adee8222a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitDistance: 1000
+  waitDistance: 2000
   stepId: 0
 --- !u!1 &1735527248
 GameObject:
