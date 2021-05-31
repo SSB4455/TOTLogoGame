@@ -120,7 +120,7 @@ public class NewBehaviourScript : MonoBehaviour
 				if (Input.touchCount > 0 || Input.GetMouseButtonDown(1))
 				{
 					stopToWait = true;
-					timeWaitShift = 1;
+					timeWaitShift = 0;
 					Debug.Log("touch");
 					if (distance <= checkArea)
 					{
@@ -141,7 +141,7 @@ public class NewBehaviourScript : MonoBehaviour
 						stopToWait = false;
 					}
 				}
-				if (stopToWait && (stepIndex >= stepSequence.Keys.Count || stepIndex >= stepTimes.Length))
+				if (stopToWait && timeWaitShift != 0 && (stepIndex >= stepSequence.Keys.Count || stepIndex >= stepTimes.Length))
 				{
 					for (int i = 0; i < sharp2ds.Length; i++)
 					{
