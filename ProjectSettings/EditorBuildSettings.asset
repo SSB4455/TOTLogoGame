@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Demo2Scene.unity
     guid: 4809fa9cfcdbd644f8823b44bfa39a17
+  - enabled: 1
+    path: Assets/HumanLadderScene.unity
+    guid: 4bd2b37ddf560524995044b8edcb9f54
   m_configObjects: {}
