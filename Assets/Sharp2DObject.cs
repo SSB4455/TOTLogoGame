@@ -14,7 +14,7 @@ public class Sharp2DObject : MonoBehaviour
 	Vector2 startPosition;
 	Vector2 disappearPosition;
 
-	public float DistanceToGoal { get { return Vector2.Distance(rectTrans.position, goalPosition); } }
+	public float DistanceToGoal { get { return Vector2.Distance(rectTrans.anchoredPosition, goalPosition); } }
 
 
 
@@ -26,7 +26,7 @@ public class Sharp2DObject : MonoBehaviour
 			Debug.LogError("Sharp2DObject lost RectTransform " + name);
 		}
 
-		goalPosition = rectTrans.position;
+		goalPosition = rectTrans.anchoredPosition;
 		goalRotation = rectTrans.rotation.eulerAngles.z;
 
 		float k = Mathf.Tan(goalRotation * Mathf.Deg2Rad);
@@ -53,15 +53,15 @@ public class Sharp2DObject : MonoBehaviour
 
 		if (progress < 0)
 		{
-			rectTrans.position = Vector2.Lerp(startPosition, goalPosition, progress + 1);
+			rectTrans.anchoredPosition = Vector2.Lerp(startPosition, goalPosition, progress + 1);
 		}
 		else if (progress > 0)
 		{
-			rectTrans.position = Vector2.Lerp(goalPosition, disappearPosition, progress);
+			rectTrans.anchoredPosition = Vector2.Lerp(goalPosition, disappearPosition, progress);
 		}
 		else
 		{
-			rectTrans.position = goalPosition;
+			rectTrans.anchoredPosition = goalPosition;
 		}
 
 	}

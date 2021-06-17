@@ -1012,16 +1012,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sharp2ds:
-  - {fileID: 138082720}
-  - {fileID: 1590807926}
   - {fileID: 725407513}
+  - {fileID: 1590807926}
+  - {fileID: 138082720}
   - {fileID: 1528134587}
   - {fileID: 1030139922}
   - {fileID: 1044933492}
   - {fileID: 1952384766}
   - {fileID: 124470097}
   stepTimes:
-  - 3
+  - 2
   effect: {fileID: 1989325104}
   progressSilder: {fileID: 1893118241}
   demoToggle: {fileID: 1533311124}
@@ -2205,8 +2205,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 270}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -71, y: -1.2}
-  m_SizeDelta: {x: 60, y: 16}
+  m_AnchoredPosition: {x: -71, y: -4.75}
+  m_SizeDelta: {x: 65, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1030139920
 MonoBehaviour:
@@ -2343,8 +2343,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 270}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 71, y: -1.2}
-  m_SizeDelta: {x: 60, y: 16}
+  m_AnchoredPosition: {x: 71, y: -4.75}
+  m_SizeDelta: {x: 65, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1076534627
 GameObject:
@@ -3305,7 +3305,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3954,8 +3954,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 184, y: 160}
-  m_SizeDelta: {x: 800, y: 40}
+  m_AnchoredPosition: {x: 330, y: 160}
+  m_SizeDelta: {x: 1200, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1893857779
 GameObject:
